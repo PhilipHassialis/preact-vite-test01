@@ -1,4 +1,5 @@
 import { useState, useMemo } from "preact/hooks";
+import { MyHeader } from "./components/myheader.jsx";
 
 export const App = (props) => {
     let [counter, setCounter] = useState(0);
@@ -8,6 +9,7 @@ export const App = (props) => {
 
     return (
         <>
+            <MyHeader />
             <div class="container-sm col-md-6 col-md-offset-3 p-2">
                 <form>
                     <div class="mb-3">
