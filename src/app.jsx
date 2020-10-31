@@ -14,7 +14,7 @@ export const App = (props) => {
     return (
         <>
             <MyHeader activeForm={activeForm} setActiveForm={setActiveForm} />
-            <div class="container-sm col-md-6 col-md-offset-3 p-2">
+            <div class="container-sm  col-md-6 col-md-offset-3 p-2">
                 <form>
                     <div class="mb-3">
                         <label for="straightForwardName" class="form-label">
