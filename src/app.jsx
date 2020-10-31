@@ -1,15 +1,19 @@
 import { useState, useMemo } from "preact/hooks";
-import { MyHeader } from "./components/myheader.jsx";
+import { MyHeader } from "./components/myHeader.jsx";
+import { MyFooter } from "./components/myFooter.jsx";
 
 export const App = (props) => {
     let [counter, setCounter] = useState(0);
     let [textForReversal, setTextForReversal] = useState("");
+    let [activeForm, setActiveForm] = useState({
+        activeButton: "",
+    });
 
     const reversedText = textForReversal.split("").reverse().join("");
 
     return (
         <>
-            <MyHeader />
+            <MyHeader activeForm={activeForm} setActiveForm={setActiveForm} />
             <div class="container-sm col-md-6 col-md-offset-3 p-2">
                 <form>
                     <div class="mb-3">
@@ -66,6 +70,9 @@ export const App = (props) => {
                         </div>
                     </div>
                 </form>
+                {activeForm.activeButton && (
+                    <MyFooter setActiveForm={setActiveForm} />
+                )}
             </div>
         </>
     );
