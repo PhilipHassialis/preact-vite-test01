@@ -53,10 +53,16 @@ export const App = (props) => {
                             readOnly="readOnly"
                         ></input>
                         <div
-                            class="btn btn-primary"
+                            class="btn btn-primary mr-2"
                             onClick={(e) => setCounter(++counter)}
                         >
                             Επαύξησις
+                        </div>
+                        <div
+                            class="btn btn-warning"
+                            onClick={(e) => setCounter(--counter)}
+                        >
+                            Προσμείωσις
                         </div>
                     </div>
                 </form>
