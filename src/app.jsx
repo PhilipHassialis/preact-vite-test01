@@ -1,6 +1,7 @@
 import { useState, useMemo } from "preact/hooks";
 import { MyHeader } from "./components/myHeader.jsx";
 import { MyFooter } from "./components/myFooter.jsx";
+import { ModalConfirmation } from "./components/modalConfirmation.jsx";
 
 export const App = (props) => {
     let [counter, setCounter] = useState(0);
@@ -8,8 +9,13 @@ export const App = (props) => {
     let [activeForm, setActiveForm] = useState({
         activeButton: "",
     });
+    let [showModalClose, setShowModalClose] = useState(false);
 
     const reversedText = textForReversal.split("").reverse().join("");
+    const restart = () => {
+        setShowModalClose(false);
+        setActiveForm({ activeButton: "" });
+    };
 
     return (
         <>
@@ -71,7 +77,20 @@ export const App = (props) => {
                     </div>
                 </form>
                 {activeForm.activeButton && (
-                    <MyFooter setActiveForm={setActiveForm} />
+                    <MyFooter
+                        setActiveForm={setActiveForm}
+                        setShowModalClose={setShowModalClose}
+                    />
+                )}
+                {showModalClose && (
+                    <ModalConfirmation
+                        modalTitle="Process close"
+                        modalMessage="Changes in the form will be lost. Proceed?"
+                        okMessage="Lose changes"
+                        cancelMessage="Cancel"
+                        setShowModalClose={setShowModalClose}
+                        restart={restart}
+                    />
                 )}
             </div>
         </>
